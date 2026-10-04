@@ -92,7 +92,7 @@ make check runs lint, formatting, strict type-checking, tests with coverage, dep
 
 ## Limitations
 
-Results follow the time-zone database installed on the host and may differ after that database is updated. IANA documents incomplete pre-1970 history and future rule changes. Queries are limited to 1970–9998. The scan assumes two offset changes do not occur within the same 30-minute interval. The library reports offset changes; it does not decide how an application should resolve an ambiguous local datetime.
+Results follow the time-zone database installed on the host and may differ after that database is updated. IANA documents incomplete pre-1970 history and future rule changes. Queries are limited to 1970–9998. The scan assumes at most one offset change per 30-minute interval; multiple changes may be missed or collapsed into one result. The library reports offset changes; it does not decide how an application should resolve an ambiguous local datetime.
 
 ## Roadmap
 
