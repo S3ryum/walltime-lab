@@ -21,7 +21,7 @@ Developers debugging calendars, schedules, logs, and recurring events need to kn
 
 The models module defines immutable Transition values. The transition module reads the host IANA database through Python zoneinfo, samples offsets across a UTC year window, then binary-searches detected changes to one-second precision. The CLI module provides text and JSON output.
 
-A 30-minute scan keeps a yearly search small. The algorithm assumes no two offset changes cancel each other inside a single scan interval; current IANA civil-time data does not use that pattern. Tests exercise synthetic second-level offsets and a real IANA zone.
+A 30-minute scan keeps a yearly search small. It assumes at most one offset change per scan interval; multiple changes may be missed or collapsed into one result. Tests exercise synthetic second-level offsets and a real IANA zone.
 
 The host database avoids a stale bundled copy and runtime network calls. An optional tzdata extra supports systems without system zone data. Queries are limited to 1970–9998 because IANA describes the post-1970 period most consistently and scan padding must fit datetime bounds. UTC instants stay aware; local wall readings are naive to make their meanings explicit.
 

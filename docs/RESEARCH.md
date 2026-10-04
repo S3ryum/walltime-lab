@@ -16,7 +16,7 @@
 
 The algorithm samples UTC offsets every 30 minutes, then binary-searches a detected boundary to the nearest second. I learned to model a transition as a unique UTC instant plus two local wall-clock endpoints: forward changes create a skipped half-open interval, backward changes create a repeated interval. The API applies this in the affected_local_interval property; tests cover synthetic second-level boundaries and Europe/Amsterdam in 2024.
 
-**Limit:** two offset changes inside one 30-minute interval could cancel and be missed. Current IANA civil transitions are farther apart. Results follow the host's installed tzdata and can change after updates.
+**Limit:** more than one offset change inside a 30-minute interval may be missed or collapsed into one result. Results follow the host's installed tzdata and can change after updates.
 
 ## Idea selection
 
