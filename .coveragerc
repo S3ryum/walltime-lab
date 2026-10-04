@@ -1,0 +1,8 @@
+[run]
+branch = true
+source = walltime_lab
+patch = subprocess
+
+[report]
+show_missing = true
+fail_under = 80
