@@ -25,9 +25,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
           cache-dependency-path: requirements-dev.lock
+      - name: Create virtual environment
+        run: python -m venv .venv
       - name: Install pinned development tools
-        run: python -m pip install -r requirements-dev.lock
+        run: .venv/bin/python -m pip install -r requirements-dev.lock
       - name: Install package
-        run: python -m pip install --no-build-isolation -e .
+        run: .venv/bin/python -m pip install --no-build-isolation -e .
       - name: Run quality gates
         run: make check
